@@ -1,0 +1,36 @@
+---
+import FaqNote from './FaqNote.jsx';
+
+const { rounded } = Astro.props;
+---
+
+<div
+	class=`bg-[#F0C417] px-[20px] py-[40px] md:px-[32px] lg:px-[70px] lg:py-[120px] flex flex-col lg:flex-row  lg:gap-[50px] justify-between !bg-[#1c1c22] text-white text-[#392a48] ${rounded?'rounded-[15px]':''} `
+>
+	<div class="lg:w-[50%]">
+		<h2 class="text-[32px] font-bold md:text-[40px]">FAQ</h2>
+		<p class="my-[15px] font-lora text-[14px] font-[400] md:my-[25px] md:text-[18px]">
+			Check out the most common questions our customers asked and if you Still have questions,
+			Contact our customer support.
+		</p>
+	</div>
+
+	<div class="lg:w-[50%] rounded-[10px] bg-[#392A48] px-[20px] py-[10px] md:px-[54px] md:py-[24px] lg:py-[40px]">
+		<FaqNote
+			client:load
+			question={'How much  time does it take for shipping?'}
+			answer={'It takes around 4-6 days for your order to get delivered'}
+		/>
+		<FaqNote
+			client:load
+			question={'How much  time does it take for shipping?'}
+			answer={'It takes around 4-6 days for your order to get delivered'}
+		/>
+		<FaqNote
+			client:load
+			question={'How much  time does it take for shipping?'}
+			answer={'It takes around 4-6 days for your order to get delivered'}
+			border={false}
+		/>
+	</div>
+</div>

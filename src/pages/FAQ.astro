@@ -1,0 +1,48 @@
+---
+import MainLayout from '../Layouts/MainLayout.astro';
+
+const data = [
+	{
+		question: '1) How can I contact your customer service team? ',
+		answer: `For customer service inquiries only, please mail us at `
+	},
+	{
+		question: '2) I emailed your customer service team. When will I receive a response? ',
+		answer:
+			'Our customer service team aims to respond to all E-mails within 24-48 hours.'
+	},
+	{
+		question: '',
+		answer:
+			'3) Shipping estimates might increase for your order during Public Holidays and busy periods. Customs and Postal Service may also require extra time to work on the processing /delivery during peak season or before major festivals (e.g., Christmas).  '
+	},
+	{
+		question: '',
+		answer:
+			'4) Once the package has been shipped and dispatched from the warehouse, any customs, natural occurrences, air and ground transportation strikes or delays are not held accountable by us. '
+	},
+	{
+		question: '5) IMPORT TAXES & DUTIES ',
+		answer:
+			'Extra charges like Import tax, duties and related Customs fees if applicable, are determined and charged by the Customs office of the destination country and the cost is not covered in payments you made to us. Please contact your local Customs office directly for further details.'
+	}
+];
+---
+
+<MainLayout>
+	<div class="px-[20px] pt-[40px] md:px-[32px] md:pt-[40px] lg:px-[48px] lg:pt-[40px] bg-[#101114] text-[#3A1E8C]   ">
+		<h2 class="my-[15px] text-center  text-[40px] font-[800] md:text-[50px] ">
+			FAQ
+		</h2>
+		<div class="space-y-8 font-lora mt-[40px] text-[16px] lg:w-[50%] md:text-[18px] md:w-[70%] m-auto">
+			{
+				data.map((d, _index) => (
+					<div class="space-y-2">
+						<p>{d.question}</p>
+						<p class="leading-[2]">{d.answer}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</MainLayout>

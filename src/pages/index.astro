@@ -1,0 +1,101 @@
+---
+import MainLayout from '../Layouts/MainLayout.astro';
+import HeroImage from '../assets/Hero.png';
+import FAQ from '../components/FAQ.astro';
+import ProductListItem from '../components/ProductListItem.jsx';
+import MobileHeroImage from '../assets/mobileHeroImage.webp';
+import DownCartItem from '../components/DownCartItem.astro';
+import MobileHeroImageTwo from '../assets/mobileHeroImageTwo.webp';
+import AboutUs from '../components/AboutUs.astro';
+import HeroDetailImage from '../assets/HeroDetailImage.webp';
+
+---
+
+<!-- font family in poppins tailwind? -->
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="box-border font-poppins bg-[#101114] text-[#392a48]">
+
+		<MainLayout>
+
+			<DownCartItem />
+
+			<img class="hidden h-screen w-screen object-cover md:block md:h-auto" src={HeroImage.src} />
+			<!-- <img
+				class="hidden h-screen w-screen object-cover md:block md:h-auto"
+				src={HeroImageTwo.src}
+			/> -->
+			<div class="inset-0 flex overflow-hidden md:hidden" id="slider">
+				<img class=" w-screen md:hidden md:h-auto" src={MobileHeroImage.src} />
+				<img class=" w-screen md:hidden md:h-auto" src={MobileHeroImageTwo.src} />
+
+			</div>
+			<div class="px-[20px] py-[12px] md:px-[32px] md:py-[24px] lg:px-[48px] lg:py-[24px]">
+				<p class="my-[15px] text-[32px] font-bold md:text-[40px]">Go Natural, Go Healthy</p>
+
+				<ProductListItem client:idle />
+			</div>
+			<div class="relative my-[60px] ">
+				<!-- Image -->
+				<img src={HeroDetailImage.src} alt="Your Image" class="inset-0 w-screen h-[450px]   object-cover" />
+			  
+				<!-- Text container -->
+				<div class="absolute inset-0 flex items-center justify-center p-[30px] bg-[#00000050]">
+				  <p class="text-white text-center  text-[25px] md:text-[30px] lg:text-[36px] font-bold">We Are The One-stop Destination For A Wide
+					Range Of Organic And Naturally Grown Foods</p>
+				</div>
+			  </div>
+			  <FAQ />
+			<AboutUs/>
+
+			
+		</MainLayout>
+		<script>
+			const addbutton = document.getElementById('addbutton');
+			console.log(addbutton);
+			addbutton?.addEventListener('click', function () {
+				console.log('yeueyw');
+			});
+		</script>
+	</body>
+</html>
+
+<script>
+	const images = document.querySelectorAll('#slider img');
+	let currentIndex = 0;
+
+	function showImage(index: number) {
+		images.forEach((image, idx) => {
+			if (idx === index) {
+				image.classList.remove('hidden');
+			} else {
+				image.classList.add('hidden');
+			}
+		});
+	}
+
+	function nextImage() {
+		currentIndex = (currentIndex + 1) % images.length;
+		showImage(currentIndex);
+	}
+
+	setInterval(nextImage, 4000);
+</script>

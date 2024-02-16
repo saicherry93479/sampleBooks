@@ -1,0 +1,46 @@
+---
+
+import Arrow from './Arrow';
+
+let { color } = Astro.props;
+if(color===null){
+    color='white';
+}
+---
+
+<div class=" px-[20px] py-[48px] md:px-[32px] lg:space-x-48 md:py-[48px] lg:px-[48px] lg:py-[64px] space-y-8 lg:space-y-0 flex flex-col lg:flex-row pt-[100px] md:pt-[150px]  lg:pt-[200px] bg-[#101114] text-white text-[#392a48]  ">
+   
+    <div class="space-y-6">
+        <h1 class="text-[24px] font-bold md:text-[32px] ">Sign up to our newsletter</h1>
+        <div class=" p-[14px] md:p-[16px] border-gray-500 border-[1.5px]  rounded-md focus:border-[#4a4a4a] flex jsutify-between items-center ">
+            <input  class="w-full text-[16px] font-lora md:text-[18px] bg-transparent  border-0 focus:border-0  outline-none placeholder:text-[#5a5a5a] placeholder:font-[500] " placeholder="E-mail"/>
+            <div class="bg-gray-500 flex justify-center items-center rotate-[-90deg] cursor-pointer rounded-full  h-[25px] w-[25px]">
+                <Arrow color='white' />
+            </div>
+        </div>
+    </div>
+
+	<div class=" space-y-6 md:space-y-0 flex flex-col md:space-x-14   md:flex-row md:items-start ">
+        <div class="flex flex-col ">
+            <h2 class="font-lora font-bold text-[14px]  md:text-[16px] leading-[30px] md:leading-[40px] ">Customer Care</h2>
+            <a href="/FAQ" class="font-lora text-[#4a4a4a]  text-[16px]  md:text-[16px] leading-[30px] md:leading-[40px]  ">FAQ</a>
+            <a href="/ShippingPolicy" class=" font-lora text-[#4a4a4a] text-[16px] font-light md:text-[18px] leading-[35px] md:leading-[40px] ">Shipping Policy</a>
+            <a  href='/RefuundPolicy' class="font-lora text-[#4a4a4a] text-[16px] font-light md:text-[18px] leading-[35px] md:leading-[40px] ">Refund Policy</a>
+            <a class=" font-lora text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[35px] md:leading-[40px] ">Cancellation Policy</a>
+            <a class="font-lora text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[35px] md:leading-[40px] ">Privacy Policy</a>
+            <a href="/Terms" class="font-lora text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[35px] md:leading-[40px] ">Terms of Service</a>
+        </div>
+        <div class="">
+            <h2 class="font-lora text-[14px] font-bold md:text-[16px] leading-[30px] md:leading-[40px] ">Contact Info</h2>
+            <p class="font-lora text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[35px] md:leading-[45px] ">Trade Name : @Books</p>
+            <p class="font-lora text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[35px] md:leading-[45px] ">Email Support : vaaradhifarms@gmail.com</p>
+            <p class="font-lora text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[35px] md:leading-[45px] md:line-clamp-2 ">Customer Care Number : +91 89770 21193</p>
+            <p class="font-lora  text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[35px] md:leading-[45px] ">
+                Customer Support Timings : 10:30am to 6:30pm
+            </p>
+            <p class="font-lora text-[#4a4a4a] font-light text-[16px] md:text-[18px] leading-[30px] md:leading-[45px]">
+                Address : Manikonda, Hyderabad, Telangana , Pin - 500089
+            </p>
+        </div>
+    </div>
+</div>

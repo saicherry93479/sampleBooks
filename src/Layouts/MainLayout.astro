@@ -1,0 +1,127 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Menu from '../components/Menu.astro';
+import CartMenu from '../components/CartMenu.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.scroller {
+				width: 100%;
+			}
+
+			.scroller__inner {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+
+			.scroller[data-animated='true'] {
+				overflow: hidden;
+				/* -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+				mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent); */
+			}
+
+			.scroller[data-animated='true'] .scroller__inner {
+				width: max-content;
+				flex-wrap: nowrap;
+				animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards)
+					linear infinite;
+			}
+
+			.scroller[data-direction='right'] {
+				--_animation-direction: reverse;
+			}
+
+			.scroller[data-direction='left'] {
+				--_animation-direction: forwards;
+			}
+
+			.scroller[data-speed='fast'] {
+				--_animation-duration: 60s;
+			}
+
+			.scroller[data-speed='slow'] {
+				--_animation-duration: 60s;
+			}
+
+			@keyframes scroll {
+				to {
+					transform: translate(calc(-50% - 0.5rem));
+				}
+			}
+
+			/* general styles */
+
+			:root {
+				--clr-neutral-100: hsl(0, 0%, 100%);
+				--clr-primary-100: hsl(205, 15%, 58%);
+				--clr-primary-400: hsl(215, 25%, 27%);
+				--clr-primary-800: hsl(217, 33%, 17%);
+				--clr-primary-900: hsl(218, 33%, 9%);
+			}
+		</style>
+	</head>
+	<body class="relative w-full">
+		<CartMenu />
+		<Menu />
+		<div class="scroller" data-speed="fast">
+			<ul
+				class="tag-list scroller__inner bg-[#392a48] p-2 font-lora text-[12px] text-white md:p-4 md:text-[14px]"
+			>
+				<li class="ml-[40px]">FREE SHIPPING ON ORDERS ABOVE ₹499</li>
+				<div class="my-auto ml-6 inline-flex h-1 w-1 rounded bg-white lg:ml-12"></div>
+				<li class="ml-[40px]">FREE SHIPPING ON ORDERS ABOVE ₹499</li>
+				<div class="my-auto ml-6 inline-flex h-1 w-1 rounded bg-white lg:ml-12"></div>
+				<li class="ml-[40px]">FREE SHIPPING ON ORDERS ABOVE ₹499</li>
+				<div class="my-auto ml-6 inline-flex h-1 w-1 rounded bg-white lg:ml-12"></div>
+				<li class="ml-[40px]">FREE SHIPPING ON ORDERS ABOVE ₹499</li>
+				<div class="my-auto ml-6 inline-flex h-1 w-1 rounded bg-white lg:ml-12"></div>
+				<li class="ml-[40px]">FREE SHIPPING ON ORDERS ABOVE ₹499</li>
+				<div class="my-auto ml-6 inline-flex h-1 w-1 rounded bg-white lg:ml-12"></div>
+				<li class="ml-[40px]">FREE SHIPPING ON ORDERS ABOVE ₹499</li>
+				<div class="border-1 inline-flex border-white"></div>
+				<li class="ml-[40px]">FREE SHIPPING ON ORDERS ABOVE ₹499</li>
+				<div class="border-1 inline-flex border-white"></div>
+			</ul>
+		</div>
+
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>
+<script>
+	const scrollers = document.querySelectorAll('.scroller');
+
+	// If a user hasn't opted in for recuded motion, then we add the animation
+	if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		addAnimation();
+	}
+
+	function addAnimation() {
+		scrollers.forEach((scroller) => {
+			// add data-animated="true" to every `.scroller` on the page
+			scroller.setAttribute('data-animated', true);
+
+			// Make an array from the elements within `.scroller-inner`
+			const scrollerInner = scroller.querySelector('.scroller__inner');
+			const scrollerContent = Array.from(scrollerInner.children);
+
+			// For each item in the array, clone it
+			// add aria-hidden to it
+			// add it into the `.scroller-inner`
+			scrollerContent.forEach((item) => {
+				const duplicatedItem = item.cloneNode(true);
+				duplicatedItem.setAttribute('aria-hidden', true);
+				scrollerInner.appendChild(duplicatedItem);
+			});
+		});
+	}
+</script>

@@ -1,0 +1,14 @@
+---
+import MenuIcon from '../icons/MenuIcon.astro';
+import CartIcon from '../icons/CartIcon.astro';
+import Logo from '../assets/LOGO.png';
+---
+<!-- tailwind code for flex justify space between items? -->
+<header class="bg-[#101114] h-[93px] md:h-[155px] py-[12px] px-[20px] lg:py-[24px] lg:px-[48px] md:py-[24px] md:px-[32px] flex items-center justify-between">
+		<MenuIcon />
+		<a href="/">
+			<img src={Logo.src} class="h-[93px] md:h-[155px]"/>
+		</a>
+		
+		<CartIcon height="10" />
+</header>

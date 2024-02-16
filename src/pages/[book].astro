@@ -1,0 +1,23 @@
+---
+import MainLayout from '../Layouts/MainLayout.astro';
+import ProductItem from '../components/ProductItem.jsx';
+import FAQ from '../components/FAQ.astro';
+
+
+export async function getStaticPaths() {
+	return [
+		{ params: { product: 'product1' } },
+		{ params: { product: 'product2' } },
+		{ params: { product: 'product3' } }
+	];
+}
+---
+
+<MainLayout>
+	<div class="bg-[#101114]">
+	<ProductItem client:load />
+	<div class="px-[20px] md:px-[32px] lg:px-[48px] mt-[100px] bg-[#101114]" >
+        <FAQ rounded={true} />
+    </div>
+</div>
+</MainLayout>
