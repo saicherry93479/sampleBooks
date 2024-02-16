@@ -21,7 +21,7 @@ const ProductItem = () => {
 	};
 
 	return (
-		<div className="flex w-full flex-col lg:flex-row lg:px-[48px] lg:py-[40px] bg-[#101114] text-white text-[#392a48]">
+		<div className="flex w-full flex-col lg:flex-row lg:px-[48px] lg:py-[40px] bg-[#101114] text-white !text-[#392a48]">
 			<div className="flex flex-col lg:h-[50%] lg:w-[50%] lg:space-y-[20px] xl:flex-row-reverse xl:justify-between xl:gap-2 xl:gap-[30px] xl:space-y-0">
 				<div
 					className="overflow-x-scroll"
